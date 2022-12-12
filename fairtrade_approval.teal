@@ -1,0 +1,46 @@
+#pragma version 6
+txn ApplicationID
+int 0
+==
+bnz main_l4
+txn OnCompletion
+int DeleteApplication
+==
+bnz main_l3
+err
+main_l3:
+txn Sender
+global CreatorAddress
+==
+return
+main_l4:
+txn NumAppArgs
+int 4
+==
+assert
+txn Note
+byte "fairtrade:uv1"
+==
+assert
+txna ApplicationArgs 3
+btoi
+int 0
+>
+assert
+byte "TITLE"
+txna ApplicationArgs 0
+app_global_put
+byte "SUMMARY"
+txna ApplicationArgs 1
+app_global_put
+byte "BATCH"
+txna ApplicationArgs 2
+app_global_put
+byte "ATTACHMENT"
+txna ApplicationArgs 3
+app_global_put
+byte "PUBLISHER"
+global CreatorAddress
+app_global_put
+int 1
+return
