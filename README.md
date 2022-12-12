@@ -1,0 +1,1 @@
+# Fairtrade-Algorand-Smart-Contract
