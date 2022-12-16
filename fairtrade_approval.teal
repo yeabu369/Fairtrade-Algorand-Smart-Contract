@@ -22,11 +22,6 @@ txn Note
 byte "fairtrade:uv1"
 ==
 assert
-txna ApplicationArgs 3
-btoi
-int 0
->
-assert
 byte "TITLE"
 txna ApplicationArgs 0
 app_global_put
