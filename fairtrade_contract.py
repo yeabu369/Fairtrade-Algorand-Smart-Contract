@@ -7,17 +7,15 @@ class Stage:
         summary = Bytes("SUMMARY")
         batch = Bytes("BATCH")
         attachment = Bytes("ATTACHMENT")
-        publisher = Bytes("PUBLISHER")
 
     def application_creation(self):
         return Seq([
-            Assert(Txn.application_args.length() == Int(5)),
+            Assert(Txn.application_args.length() == Int(4)),
             Assert(Txn.note() == Bytes("fairtrade:uv1")),
             App.globalPut(self.Variables.title, Txn.application_args[0]),
             App.globalPut(self.Variables.summary, Txn.application_args[1]),
             App.globalPut(self.Variables.batch, Txn.application_args[2]),
             App.globalPut(self.Variables.attachment, Txn.application_args[3]),
-            App.globalPut(self.Variables.publisher, Txn.application_args[4]),
             Approve()
         ])
 
