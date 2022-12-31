@@ -15,7 +15,7 @@ global CreatorAddress
 return
 main_l4:
 txn NumAppArgs
-int 4
+int 5
 ==
 assert
 txn Note
@@ -35,7 +35,7 @@ byte "ATTACHMENT"
 txna ApplicationArgs 3
 app_global_put
 byte "PUBLISHER"
-global CreatorAddress
+txna ApplicationArgs 4
 app_global_put
 int 1
 return
