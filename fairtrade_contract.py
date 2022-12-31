@@ -17,7 +17,7 @@ class Stage:
             App.globalPut(self.Variables.summary, Txn.application_args[1]),
             App.globalPut(self.Variables.batch, Txn.application_args[2]),
             App.globalPut(self.Variables.attachment, Txn.application_args[3]),
-            App.globalPut(self.Variables.publisher, Global.creator_address()),
+            App.globalPut(self.Variables.publisher, txn.sender),
             Approve()
         ])
 
